@@ -13,8 +13,11 @@
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
-            <h3 style="margin-top:12px;"><b>CookieWare</b></h3>
+            <h3 style="margin-top:12px; padding-right:20px;"><b>CookieWare</b></h3>
         </div>
+        <ul class="nav navbar-nav">
+          <li><%= active_link_to 'Home', '/', :wrap_tag => :li %></li>
+        </ul>
         <ul class="nav navbar-nav navbar-right">
           <% if current_user %>
             <li><%= active_link_to 'Logout', '/logout', :wrap_tag => :li %></li>

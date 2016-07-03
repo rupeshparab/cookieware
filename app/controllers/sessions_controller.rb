@@ -1,9 +1,13 @@
 class SessionsController < ApplicationController
 
-  def create
-    if session.key?("user_id") && !User.find_by_id(session[:user_id]).blank?
+  def new
+    current_user ||= User.find(session[:user_id]) rescue nil if session[:user_id]
+    if current_user
       redirect_to '/' and return
     end
+  end
+
+  def create
     user = User.find_by_username(params[:user][:username])
     if user && user.authenticate(params[:user][:password])
       session[:user_id] = user.id

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def new
-    if session.key?("user_id") && !User.find_by_id(session[:user_id]).blank?
+    current_user ||= User.find(session[:user_id]) rescue nil if session[:user_id]
+    if current_user
       redirect_to '/' and return
     end
   end
