@@ -1,0 +1,9 @@
+<%= form_for :user, url: '/users', html: {class: 'form-signin'} do |f| %>
+  <h2>Join us</h2>
+  <label for="username" class="sr-only">Username</label> <%= f.text_field :username, :class => "form-control first", :placeholder => "username", :required => "", :autofocus => ""  %>
+  <label for="password" class="sr-only">Password</label> <%= f.password_field :password, :class => "form-control mid", :placeholder => "password", :required => "" %>
+  <label for="password_confirmation" class="sr-only">Password Confirmation</label> <%= f.password_field :password_confirmation, :class => "form-control mid", :placeholder => "password", :required => "" %>
+  <%= f.submit "Sign up!", :class => "btn btn-lg btn-success btn-block last" %>
+<% end %>
+
+<%= render :partial =>  'partials/errors' %>
