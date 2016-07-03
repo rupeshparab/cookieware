@@ -1,1 +1,24 @@
 <h2>Welcome to CookieWare</h2>
+<% if session.key?("last_access_t") %>
+Your last access time was <%= session[:last_access_t] %> <br/>
+<% end %>
+<h3>Following are your cookies</h3>
+
+<div class="table-responsive" style="max-width:600px">
+  <table class="table table-hover table-condensed table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Key</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% session.each do |key, value| %>
+      <tr>
+        <th><%= key %></th>
+        <td><%= value %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
